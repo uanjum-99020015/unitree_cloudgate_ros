@@ -1,0 +1,21 @@
+# Unitree G1 app parameters (ROS2 Jazzy)
+# Use with: ros2 run unitree_g1_app <node> --ros-args --params-file <path>/g1_app_params.yaml
+
+unitree_g1_app:
+  ros__parameters:
+    # Movement node
+    modes_service: "/g1_unit_001/hardware_modes"
+    robot_namespace: "g1_unit_001"
+
+    # Audio node
+    audio_service: "/g1_unit_001/hardware/audio"
+    default_volume: 80
+
+    # Video node (adjust topic to match your camera; RealSense often uses /camera/...)
+    image_topic: "/camera/camera/color/image_raw"
+    process_interval_frames: 5
+
+    # Demo
+    run_on_start: true
+    gesture: "wave_hand"
+    speak_text: "Hello from Unitree G1."
