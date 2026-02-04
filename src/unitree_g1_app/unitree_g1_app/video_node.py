@@ -44,7 +44,7 @@ class VideoNode(Node):
         )
         if not HAS_CV_BRIDGE:
             self.get_logger().warn(
-                "cv_bridge not found. Install: sudo apt install ros-jazzy-cv-bridge. "
+                "cv_bridge not found (Ubuntu/ROS2 Jazzy: sudo apt install ros-jazzy-cv-bridge). "
                 "Image callback will only log receipt."
             )
 

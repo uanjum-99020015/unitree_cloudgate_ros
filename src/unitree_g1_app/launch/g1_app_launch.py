@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Launch movement, audio, and video nodes for Unitree G1."""
+"""Launch movement, audio, and video nodes for Unitree G1 (Ubuntu 24.04, ROS2 Jazzy)."""
 import os
 
 from ament_index_python.packages import get_package_share_directory

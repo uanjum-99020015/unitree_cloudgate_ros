@@ -3,9 +3,10 @@
 <package format="3">
   <name>unitree_g1_app</name>
   <version>0.1.0</version>
-  <description>ROS2 Jazzy application for Unitree G1: movement/gestures, audio (speak &amp; transcription), video processing</description>
+  <description>ROS2 Jazzy application for Unitree G1: movement/gestures, audio (speak &amp; transcription), video processing. Target platform: Ubuntu 24.04 with ROS2 Jazzy.</description>
   <maintainer email="user@example.com">User</maintainer>
   <license>Apache-2.0</license>
+  <!-- Target: Ubuntu 24.04 (Noble), ROS2 Jazzy -->
 
   <depend>rclpy</depend>
   <depend>std_msgs</depend>

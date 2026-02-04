@@ -6,20 +6,23 @@ ROS2 Jazzy workspace and package for the **Unitree G1** humanoid robot. It provi
 - **Audio** – Make the robot speak (TTS) and optional pipeline for audio → transcription
 - **Video** – Subscribe to camera images for processing (e.g. card scanning, OCR)
 
+**Target platform:** Ubuntu 24.04 (Noble) with ROS2 Jazzy. Developed and intended to run on Linux only. See [docs/UBUNTU_JAZZY_SETUP.md](docs/UBUNTU_JAZZY_SETUP.md) for install steps.
+
 ## Requirements
 
-- **ROS2 Jazzy** (Ubuntu 24.04)
+- **Ubuntu 24.04** (Noble Numbat)
+- **ROS2 Jazzy Jalisco** – [Installation guide](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html)
 - Unitree G1 with **G1 ROS2 stack** installed (e.g. `g1_platform`, `g1_interface`) on the robot or on a PC connected to the robot
-- Network: connect to G1 (e.g. Ethernet 192.168.123.164, or set your PC to 192.168.123.51)
+- Network: connect to G1 (e.g. Ethernet 192.168.123.164; set your PC to 192.168.123.51 as in [G1 docs](https://www.docs.quadruped.de/projects/g1/html/quick_start.html))
 - Set **ROS_DOMAIN_ID=10** when running (G1 default):
 
   ```bash
   export ROS_DOMAIN_ID=10
   ```
 
-Optional for video processing:
+Optional for video processing (image → OpenCV in `video_node`):
 
-- `ros-jazzy-cv-bridge` and OpenCV for image handling
+- `ros-jazzy-cv-bridge`: `sudo apt install ros-jazzy-cv-bridge`
 
 ## Workspace layout
 
@@ -36,14 +39,26 @@ ros/
 │       ├── launch/
 │       ├── config/
 │       └── package.xml
+├── docs/
+│   └── UBUNTU_JAZZY_SETUP.md   # Ubuntu 24.04 + ROS2 Jazzy install
 └── README.md
 ```
 
-## Build
+## Build (Ubuntu)
+
+From the workspace root (e.g. `~/ros` or `~/Desktop/ros`):
 
 ```bash
-cd /path/to/ros
+cd ~/ros   # or your workspace path
+source /opt/ros/jazzy/setup.bash
 colcon build --symlink-install
+source install/setup.bash
+```
+
+Use a **bash** shell (default on Ubuntu). For every new terminal, re-source:
+
+```bash
+source /opt/ros/jazzy/setup.bash
 source install/setup.bash
 ```
 
@@ -173,6 +188,7 @@ Edit `config/g1_app_params.yaml` or pass a params file:
 
 ## Notes
 
+- **Ubuntu only:** This project is intended for Ubuntu 24.04 and ROS2 Jazzy. Paths and tooling assume a Linux environment (e.g. `source setup.bash`, `/opt/ros/jazzy`).
 - Ensure **arms are straight down** when powering on the G1 so ROS2 control works as expected.
 - G1 uses **ROS_DOMAIN_ID=10**; set it in your shell or launch env when talking to the robot.
 - If `g1_interface` is not installed, movement and audio nodes will report that the G1 service is unavailable; install the Unitree G1 ROS2 stack on the side that calls those services.
